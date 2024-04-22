@@ -1,0 +1,13 @@
+<!-- <p>{{userInfo?.name?.first}}{{userInfo?.name?.last}}</p> -->
+<div class="user" *ngIf="userInfo">
+    <div class="user__image">
+       <img src="{{userInfo.picture.medium}}">
+    </div>
+    <div class="user__name">
+        {{userInfo.name.first}} {{userInfo.name.last}}
+    </div>
+    <div class="user__phone">
+        {{userInfo.phone}}
+    </div>
+</div>
+<div class="loading" *ngIf = "!userInfo">Loading ...</div>

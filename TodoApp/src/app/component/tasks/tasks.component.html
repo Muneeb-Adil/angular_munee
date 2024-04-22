@@ -1,0 +1,8 @@
+<button class="createtask" (click)="createTask()">Create task</button>
+
+<div *ngFor = "let task of taskArray">
+    <li>{{task.taskname}}</li>
+        
+        <button (click)="editTask(task)">Edit Task</button>
+</div>
+
