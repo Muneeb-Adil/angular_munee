@@ -1,21 +1,14 @@
 <div class="comment-list">
     <h2>Todos</h2>
+    <button (click)="createTask()">Create Todo</button>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Todo</th>
-                <th>Completed</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
         <tbody>
             <tr *ngFor="let todo of todos">
-                <td>{{todo.id}}</td>
                 <td>{{todo.todo}}</td>
-                <td>{{todo.completed}}</td>
-                <button>edit</button>
-              
+                <button *ngIf="todo.completed"><img src="../../assets/complete.png" (click)="changeTodoStatus(todo)"></button>
+                <button *ngIf="!todo.completed"><img src="../../assets/unfinished.png" (click)="changeTodoStatus(todo)"></button>
+                <button (click)="editTask(todo)"><img src="../../assets/edit.png"></button>
+                <button (click)="deleteTodo(todo)"><img src="../../assets/delete.png"></button>
             </tr>
         </tbody>
     </table>

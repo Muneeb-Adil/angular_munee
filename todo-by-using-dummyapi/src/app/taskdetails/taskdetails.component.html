@@ -1,1 +1,9 @@
-<p>taskdetails works!</p>
+<div>Task
+    <div class="task">
+        <input type="text"  [(ngModel)]="todoText"><br>
+        <label>Completed</label>
+        <input type="checkbox" [(ngModel)]="todoStatus" >
+        <button *ngIf="todoId" (click)="editTask(todoId,todoText,todoStatus)">Edit Task</button>
+        <button *ngIf="!todoId" (click)="saveTask(todoText,todoStatus)">Save task</button>
+    </div>
+    </div>
