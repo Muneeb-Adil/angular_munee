@@ -1,9 +1,51 @@
-<div>Task
+<!-- <input type="text" [formControl]="myText">
+<input type="button" value="Set default" (click)="setDefaultValue()"/>
+<div>{{myText.value}}</div> -->
+
+<div class="comment-list flex flex-col items-center justify-center">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center justify-center">
+        <div class="mb-4">
+            <label class="text-lg font-bold block">Task</label>
+            <input type="text" formControlName="todoText" required placeholder="Add task" class="border border-gray-300 rounded-md p-2 w-80">
+        </div>
+        <label class="mb-4">
+            <input type="checkbox" formControlName="todoStatus" class="mr-2">
+            <span class="text-lg">Completed</span>
+        </label>
+        <button [disabled]="!todoForm.valid" (click)="saveTask()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            {{ todoId !== 'new' ? 'Edit' : 'Add' }} task
+        </button>
+    </form>
+</div>
+
+
+
+
+
+<!-- <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <label>Task
+        <input type="text"  formControlName="todoText" required placeholder="Add task"><br>      
+    </label><br>
+    <label>Completed
+        <input type="checkbox" formControlName="todoStatus">
+        <button [disabled]="!todoForm.valid" (click)="saveTask()"> {{todoId !== 'new' ? 'Edit ' : 'Add '}} task</button>
+    </label>
+</form> -->
+
+
+
+          
+            
+
+<!-- <div>Task
     <div class="task">
-        <input type="text"  [(ngModel)]="todoText"><br>
+        <input type="text"  [(ngModel)]="todoText" required><br>
+        
+        
         <label>Completed</label>
         <input type="checkbox" [(ngModel)]="todoStatus" >
-        <button *ngIf="todoId" (click)="editTask(todoId,todoText,todoStatus)">Edit Task</button>
-        <button *ngIf="!todoId" (click)="saveTask(todoText,todoStatus)">Save task</button>
-    </div>
-    </div>
+        <button (click)="saveTask(todoText,todoStatus)"> {{todoId !== 'new' ? 'Edit ' : 'Add '}} task</button>
+    </div> -->
+  
+
+    

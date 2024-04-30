@@ -1,0 +1,8 @@
+<h1>Rules of the Quiz</h1>
+<ul *ngFor="let rule of rules; let i = index">
+    <li>
+        {{i + 1}}. {{rule}}
+    </li>
+</ul>
+<button (click)="goToStartPage()">Exit</button>
+<button (click)="goToAttemptQuiz()">Attempt Quiz</button>
