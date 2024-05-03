@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Question } from './models/question'; // Assuming you have a Question model defined
+import { Question } from './models/question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionServiceService {
+  correctAnswersCount = 0
 
   private baseUrl = 'https://opentdb.com/api.php';
 
@@ -23,5 +24,9 @@ export class QuestionServiceService {
         }));
       })
     );
+  }
+
+  getCorrectAnswerCount(){
+    return this.correctAnswersCount
   }
 }

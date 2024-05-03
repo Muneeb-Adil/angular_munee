@@ -14,19 +14,19 @@ export class DisplaytodosComponent implements OnInit {
   @Output() deleteTaskemitter = new EventEmitter();
 
 
-  displayedColumns: string[] = ['id','todo', 'status'];
-  dataSource!: MatTableDataSource<Todo>; // Define MatTableDataSource
+  // displayedColumns: string[] = ['id','todo', 'status'];
+  // dataSource!: MatTableDataSource<Todo>; // Define MatTableDataSource
 
   constructor( ) { 
-    this.dataSource = new MatTableDataSource<Todo>([]);
-    console.log(this.dataSource)
+    // this.dataSource = new MatTableDataSource<Todo>([]);
+    // console.log(this.dataSource)
   }
 
   ngOnInit(): void {
-    if (this.todos && this.todos.length > 0) {
-      this.dataSource.data = this.todos;
+    // if (this.todos && this.todos.length > 0) {
+    //   this.dataSource.data = this.todos;
       
-    }
+    // }
   }
 
   changeTodoStatus(todo: Todo) {

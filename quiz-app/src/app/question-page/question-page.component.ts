@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from '../models/question'
 import { QuestionServiceService } from '../question-service.service';
+import { Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-question-page',
@@ -15,10 +17,13 @@ export class QuestionPageComponent implements OnInit {
   seconds: number;
   questions: Question[] = [];
   myQuestions: any;
+  correctAnswersCount = 0
+  currentQuestionIndex: number = 0
+
 
 
   constructor(private router: Router, private questionServiceObj: QuestionServiceService) {
-    this.time = 5 * 60 * 1000;
+    this.time = 2 * 60 * 1000;
     this.minutes = 0;
     this.seconds = 0;
     this.startTime = this.formatTime(this.minutes, this.seconds)
@@ -27,7 +32,7 @@ export class QuestionPageComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
     setTimeout(() => {
-      this.showResult();
+      this.router.navigate(['end-page'])
     }, this.time);
 
     setInterval(() => {
@@ -35,29 +40,36 @@ export class QuestionPageComponent implements OnInit {
     }, 1000);
   }
 
+  receiveAnswer(question: string,answer:any) {
+    let index = this.questions.findIndex((x: { question: string; })=>x.question==question)
+    console.log(this.questions[index].correct_answer)
+    if(answer.answer==this.questions[index].correct_answer){
+      this.correctAnswersCount += 1
+  
+    }
+    this.goToNextQuestion();
+  }
+
+  goToNextQuestion() { 
+    this.questionServiceObj.correctAnswersCount=this.correctAnswersCount
+    if(this.currentQuestionIndex < this.myQuestions.length - 1) {
+      this.currentQuestionIndex++;
+    }
+  }
 
   getData() {
     this.questionServiceObj.getQuestions().subscribe(data => {
-      this.questions = data; // Assign fetched data to the array
+      this.questions = data; 
       this.copyDataToMyQuestions();
     });
   }
   copyDataToMyQuestions() {
     this.myQuestions = this.questions.map((question) => {
-      const answers = [question.correct_answer, ...question.incorrect_answers]
-      const random_answers: any[] = [];
-      for (let i = 0; i < answers.length; i++) {
-        let flag = false
-        while (flag != true) {
-          const num = this.reGenerate();
-          if (!(random_answers.includes(answers[num]))) {
-            random_answers.push(answers[num])
-            flag = true
-          }
-        }
-      }
+      const answers = question.incorrect_answers
+      const num = this.reGenerate();
+      answers.splice(num, 0, question.correct_answer)
       return {
-        answers: random_answers,
+        answers: answers,
         question: question.question
       }
     })
@@ -76,9 +88,6 @@ export class QuestionPageComponent implements OnInit {
     this.startTime = this.formatTime(this.minutes, this.seconds);
   }
 
-  showResult() {
-    this.router.navigate(['end-page'])
-  }
   formatTime(minutes: number, seconds: number): string {
     return `${this.padNumber(minutes)}:${this.padNumber(seconds)}`;
   }

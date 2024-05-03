@@ -1,0 +1,12 @@
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <h3>{{index+1}}.{{ question.question }}</h3>
+    <div *ngFor="let answer of question.answers;let i=index">
+        <input type="radio" [value]="answer" formControlName="answer">{{i+1}}.{{ answer }}
+    </div>
+    <div *ngIf="index+1!==questionArrayLength; else elseBlock">
+        <button type="submit" [disabled]="!questionForm.valid">-></button>
+    </div>
+    <ng-template #elseBlock>
+        <button (click)="showResult()" [disabled]="!questionForm.valid">Submit Quiz</button>
+    </ng-template>
+</form>

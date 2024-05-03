@@ -4,12 +4,14 @@ import { RulesPageComponent } from './rules-page/rules-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { QuestionPageComponent } from './question-page/question-page.component';
 import { EndPageComponent } from './end-page/end-page.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   {path:'rules',component:RulesPageComponent},
   {path:'',component:StartPageComponent},
   {path:'question-page',component:QuestionPageComponent},
-  {path:'end-page',component:EndPageComponent}
+  {path:'end-page',component:EndPageComponent},
+  {path:'results',component:ResultsComponent}
 ];
 
 @NgModule({

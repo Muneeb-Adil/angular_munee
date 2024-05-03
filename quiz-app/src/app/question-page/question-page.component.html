@@ -3,25 +3,9 @@
     <img src="../../assets/alarm-clock.svg" alt="Incomplete" class="small">
     <h3>{{startTime}}</h3>
 </div>
+
 <div *ngFor="let question of myQuestions;let i=index">
-    <h3>{{i+1}}.{{ question.question }}</h3>
-    <div *ngFor="let answer of question.answers;let i=index">
-      <input type="radio" name="answer">{{i+1}}.{{ answer }}
+    <div *ngIf="currentQuestionIndex===i" >
+        <app-display-each-question [questionArrayLength]="myQuestions.length" [question]="question" [index]="i" (answerEmitter)="receiveAnswer(question.question,$event)"></app-display-each-question>
     </div>
 </div>
-<!-- <ul *ngFor="let question of myQuestions; let i = index">
-    <li>
-        <h2>{{i + 1}}. {{question.question}}</h2>
-    </li>
-    <input type="radio" id="paris" name="question1" value="option1">
-    <label for="option1">{{question.answers[0]}}</label><br>
-
-    <input type="radio" id="london" name="question1" value="option2">
-    <label for="option2">{{question.answers[1]}}</label><br>
-
-    <input type="radio" id="berlin" name="question1" value="option3">
-    <label for="option3">{{question.answers[2]}}</label><br>
-
-    <input type="radio" id="rome" name="question1" value="option4">
-    <label for="option4">{{question.answers[3]}}</label><br>
-</ul> -->
