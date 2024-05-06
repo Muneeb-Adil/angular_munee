@@ -6,37 +6,43 @@ import { Todo } from './models/todoInterface';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TodoserviceService {
+  todos : Todo[]=[];
+  todoId : number|undefined;
   private baseUrl  = 'https://dummyjson.com'
-  editTaskSubject = new BehaviorSubject<any>(null);
+  private editTaskSubject = new BehaviorSubject<any>(null);
+  editTaskSubject$ = this.editTaskSubject.asObservable();
+
+  saveInEditTaskSubject() {
+    this.editTaskSubject.next(null);
+  }
+
+
 
   constructor(private http:HttpClient) { 
   }
   getTodos():Observable<any>{
     return this.http.get(`${this.baseUrl}/todos`)
   }
+  editTask(todoId:number,todoText:string,todoStatus:boolean){
+    this.todos.map((todo) => {
+      if(todo.id == todoId){
+        todo.completed=todoStatus;
+        todo.todo=todoText
+      }
+    })
+
+  }
+  addNewTask(todoText:string,todoStatus:boolean){
+    this.todoId && this.todoId++
+    const newtodoId = this.todoId
+    const todo = new Todo({
+      id: newtodoId,
+      todo: todoText,
+      completed: todoStatus
+    })
+    this.todos.push(todo)
+
+  } 
 }
-//   id: number = 4;
-//   taskArray: task[] = [{id: 1,taskname :"Organize party"},{id:2,taskname :"Make Lunch"},{id:3,taskname :"Take dinner"}];
-//   editTaskSubject = new BehaviorSubject<any>(null);
-//   constructor() { 
-//   }
-
-//   addNewTask(tasktext: string):void{
-//     this.taskArray.push({id:this.id, taskname: tasktext})
-//     this.id++;
-//   }
-//   editOldTask(taskParam:task):void{
-//     // for(let i=0;i<this.taskArray.length;i++){
-//     //   if(task.id == this.taskArray[i].id){
-//     //     this.taskArray[i]=task.taskname;
-//     //   }
-//     // }
-
-//     this.taskArray.map((task) => {
-//       if(taskParam.id == task.id){
-//         task.taskname=taskParam.taskname;
-//       }
-//     })
-//   }
-// }

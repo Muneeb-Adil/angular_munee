@@ -1,0 +1,38 @@
+.rules-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin-right: 10px; /* Adjust this value for spacing between buttons */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}

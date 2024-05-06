@@ -1,0 +1,24 @@
+<!-- <h1>My Quiz App</h1>
+<div>
+    <img src="../../assets/alarm-clock.svg" alt="Incomplete" class="small">
+    <h3>{{startTime}}</h3>
+</div>
+
+<div *ngFor="let question of myQuestions;let i=index">
+    <div *ngIf="currentQuestionIndex===i" >
+        <app-display-each-question [questionArrayLength]="myQuestions.length" [question]="question" [index]="i" (answerEmitter)="receiveAnswer(question.question,$event)"></app-display-each-question>
+    </div>
+</div> -->
+<div class="quiz-app-container">
+    <h1>My Quiz App</h1>
+    <div class="timer-container">
+        <img src="../../assets/alarm-clock.svg" alt="Incomplete" class="small">
+        <h3>{{startTime}}</h3>
+    </div>
+
+    <div *ngFor="let question of myQuestions; let i=index" class="question-container">
+        <div *ngIf="currentQuestionIndex===i" class="answer-container">
+            <app-display-each-question [questionArrayLength]="myQuestions.length" [question]="question" [index]="i" (answerEmitter)="receiveAnswer(question.question,$event)"></app-display-each-question>
+        </div>
+    </div>
+</div>

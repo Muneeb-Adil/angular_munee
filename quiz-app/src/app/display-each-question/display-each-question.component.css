@@ -1,0 +1,38 @@
+.quiz-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.answer-option {
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

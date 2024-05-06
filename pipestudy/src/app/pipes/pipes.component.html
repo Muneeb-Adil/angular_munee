@@ -1,0 +1,30 @@
+<!-- <p>The hero's birthday is {{ birthday | date }}</p> -->
+<!-- <p>
+    The chained hero's uppercase birthday is
+    {{ birthday | date | uppercase}}
+  </p>
+  
+  <p>
+    The chained hero's uppercase birthday in "fullDate" format is
+    {{ birthday | date:'fullDate' | uppercase}}
+  </p> -->
+
+Date:{{dateToday}} <br>
+Date Pipe: {{dateToday | date |uppercase}} <br>
+Date Pipe : {{dateToday | date : 'short'|lowercase}} <br>
+Name : {{name|uppercase}} <br>
+Name : {{name|slice:6}}
+
+<h1>The reverse of simplilearn {{ "simplilearn"| custompipe}}</h1>
+
+<h1>Hey, Good Morning</h1>
+<div [ngSwitch]="day">
+<div *ngSwitchCase="0"><h1>{{days[0]}}</h1></div>
+<div *ngSwitchCase="1"><h1>{{days[1]}}</h1></div>
+<div *ngSwitchCase="2"><h1>{{days[2]}}</h1></div>
+<div *ngSwitchCase="3"><h1>{{days[3]}}</h1></div>
+<div *ngSwitchCase="4"><h1>{{days[4]}}</h1></div>
+<div *ngSwitchCase="5"><h1>{{days[5]}}</h1></div>
+<div *ngSwitchCase="6"><h1>{{days[6]}}</h1></div>
+<div *ngSwitchDefault><h1>Ohh Something  went wrong</h1></div>
+</div>

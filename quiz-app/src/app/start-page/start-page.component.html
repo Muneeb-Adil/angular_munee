@@ -1,0 +1,22 @@
+<!-- <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+    <input type="text" placeholder="Enter your Name" formControlName="username" required>
+    <br><br>
+    <input type="email" placeholder="Enter your Email" formControlName="email" required>
+    <br><br>
+    <input type="date" placeholder="Enter your Date of Birth" formControlName="date_of_birth" required>
+    <br><br>
+    <button  type="submit" [disabled]="!loginForm.valid">Start quiz</button>
+</form>
+<button (click)="showAllUsersResults()">Results</button> -->
+
+<form [formGroup]="loginForm" (ngSubmit)="userLogin()" class="login-form">
+    <input type="text" placeholder="Enter your Name" formControlName="username" required>
+    <br><br>
+    <input type="email" placeholder="Enter your Email" formControlName="email" required>
+    <br><br>
+    <input type="date" placeholder="Enter your Date of Birth" formControlName="date_of_birth" required>
+    <br><br>
+    <button type="submit" [disabled]="!loginForm.valid">Start Quiz</button>
+</form>
+
+<button (click)="showAllUsersResults()" class="results-button">Results</button> 
