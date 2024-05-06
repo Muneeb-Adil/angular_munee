@@ -1,0 +1,27 @@
+/* Apply styles to the table and its cells */
+.mat-elevation-z8 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .mat-elevation-z8 th, .mat-elevation-z8 td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style the table header */
+  .mat-elevation-z8 th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  /* Style the alternating rows */
+  .mat-elevation-z8 tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style the table row on hover */
+  .mat-elevation-z8 tr:hover {
+    background-color: #f2f2f2;
+  }
+  

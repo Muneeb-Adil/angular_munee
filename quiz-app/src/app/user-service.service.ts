@@ -7,7 +7,6 @@ import { User } from './models/user';
 export class UserServiceService {
   users : User[]=[];
   user = new User('');
-  userid: number =1;
 
   constructor() {
     

@@ -5,7 +5,7 @@ export class User {
     marks: number
 
     constructor(User: any) {
-        this.name = User.username
+        this.name = User.name
         this.email = User.email
         this.date_of_birth = User.date_of_birth
         this.marks=User.marks

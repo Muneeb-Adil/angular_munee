@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { QuestionServiceService } from '../question-service.service';
 import { UserServiceService } from '../user-service.service';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-end-page',
@@ -10,26 +11,34 @@ import { User } from '../models/user';
 })
 export class EndPageComponent implements OnInit {
   correctAnswersCount : number;
-  userId!:number;
 
-  constructor(private questionServiceObj :QuestionServiceService,private userServiceObj : UserServiceService) { 
-    this.userServiceObj.user.marks = this.questionServiceObj.getCorrectAnswerCount();
+  constructor(private questionServiceObj :QuestionServiceService,private userServiceObj : UserServiceService,private router:Router) { 
+ 
     this.correctAnswersCount = this.questionServiceObj.getCorrectAnswerCount();
-    this.userId=this.userServiceObj.userid;
-    console.log(this.userServiceObj.user)
-    localStorage.setItem(`User-${this.userId}`,JSON.stringify(this.userServiceObj.user))
-    const userData = localStorage.getItem(`User-${this.userId}`)
-    console.log(userData)
-    if(userData){
-      const userFromStorage = JSON.parse(userData);
-      const newUser = new User(userFromStorage);
-      this.userServiceObj.users.push(newUser)
-      this.userId++;
-      this.userServiceObj.userid=this.userId;
-    }
-    console.log(userServiceObj.users)
   }
   ngOnInit(): void {
+    if(this.userServiceObj.user && this.userServiceObj.user.name){
+      this.userServiceObj.user.marks = this.questionServiceObj.getCorrectAnswerCount();
+      this.userServiceObj.users.push(this.userServiceObj.user as User)
+    }
+    console.log(this.userServiceObj.users)
+
+    let userArray = localStorage.getItem(`Users`)
+    if(userArray ){
+      localStorage.removeItem(`Users`)
+      const existingUsers: User[] = JSON.parse(userArray)
+      this.userServiceObj.users= this.userServiceObj.users.concat(existingUsers);
+      localStorage.setItem(`Users`,JSON.stringify(this.userServiceObj.users))
+      console.log(this.userServiceObj.users)
+    }
+    else{
+      localStorage.setItem(`Users`,JSON.stringify(this.userServiceObj.users))
+      console.log(this.userServiceObj.users)
+    }
+    console.log(this.userServiceObj.users)
+  }
+  showAllUsersResults(){
+    this.router.navigate(['results'])
   }
 
 }

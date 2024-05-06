@@ -11,7 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DisplayEachQuestionComponent } from './display-each-question/display-each-question.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ResultsComponent } from './results/results.component';
-@NgModule({
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+
+import { MatTableModule } from '@angular/material/table';@NgModule({
   declarations: [
     AppComponent,
     StartPageComponent,
@@ -26,7 +33,13 @@ import { ResultsComponent } from './results/results.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatTableModule, MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

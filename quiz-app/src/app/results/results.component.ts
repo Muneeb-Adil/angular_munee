@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
+import { User } from '../models/user';
 
 
 @Component({
@@ -8,15 +9,23 @@ import { UserServiceService } from '../user-service.service';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-
+  displayedColumns: string[] = ['name', 'email', 'dob', 'marks'];
+  users : User[]=[];
   constructor(private userServiceObj:UserServiceService) { 
-    // console.log(userServiceObj.users)
-    // for(let i=0;i<userServiceObj.users.length;i++){
-    //   console.log(userServiceObj.users[i])
-    // }
+   
   }
 
   ngOnInit(): void {
+    this.users=this.userServiceObj.users
+    // let userArray = localStorage.getItem(`Users`)
+    
+    // if(userArray && this.userServiceObj.users.length===0){
+    //   this.userServiceObj.users=  JSON.parse(userArray)
+    //   this.users = this.userServiceObj.users
+    // }
+    // else{
+    //   this.users = this.userServiceObj.users
+    // }
   }
 
 }
