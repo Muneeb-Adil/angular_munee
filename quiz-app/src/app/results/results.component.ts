@@ -9,23 +9,22 @@ import { User } from '../models/user';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'email', 'dob', 'marks'];
+  displayedColumns: string[] = ['userId','name', 'email', 'dob', 'marks'];
   users : User[]=[];
   constructor(private userServiceObj:UserServiceService) { 
    
   }
 
   ngOnInit(): void {
-    this.users=this.userServiceObj.users
-    // let userArray = localStorage.getItem(`Users`)
-    
-    // if(userArray && this.userServiceObj.users.length===0){
-    //   this.userServiceObj.users=  JSON.parse(userArray)
-    //   this.users = this.userServiceObj.users
-    // }
-    // else{
-    //   this.users = this.userServiceObj.users
-    // }
+    if(this.userServiceObj.users.length){
+      this.users=this.userServiceObj.users
+    }
+    else{
+      let userArray = localStorage.getItem(`Users`)
+      this.userServiceObj.users=userArray &&  JSON.parse(userArray)
+      this.users=this.userServiceObj.users
+      console.log(this.users)
+    }
   }
 
 }

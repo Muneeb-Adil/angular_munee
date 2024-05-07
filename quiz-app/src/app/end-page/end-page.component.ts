@@ -3,6 +3,7 @@ import { QuestionServiceService } from '../question-service.service';
 import { UserServiceService } from '../user-service.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-end-page',
@@ -17,28 +18,39 @@ export class EndPageComponent implements OnInit {
     this.correctAnswersCount = this.questionServiceObj.getCorrectAnswerCount();
   }
   ngOnInit(): void {
-    if(this.userServiceObj.user && this.userServiceObj.user.name){
-      this.userServiceObj.user.marks = this.questionServiceObj.getCorrectAnswerCount();
-      this.userServiceObj.users.push(this.userServiceObj.user as User)
-    }
-    console.log(this.userServiceObj.users)
-
+    
     let userArray = localStorage.getItem(`Users`)
+    let existingUsers:User[]=[];
     if(userArray ){
       localStorage.removeItem(`Users`)
-      const existingUsers: User[] = JSON.parse(userArray)
-      this.userServiceObj.users= this.userServiceObj.users.concat(existingUsers);
-      localStorage.setItem(`Users`,JSON.stringify(this.userServiceObj.users))
+      existingUsers = JSON.parse(userArray)
+      this.userServiceObj.users=existingUsers
+    }
+    
+   
+    if (this.userServiceObj.user.name && this.userServiceObj.user.visited == undefined) {
+      this.userServiceObj.user.marks = this.questionServiceObj.getCorrectAnswerCount();
+      this.userServiceObj.user.visited=true
+      if(userArray){
+        this.userServiceObj.user.userId=existingUsers.length;
+      }
+      else{
+        this.userServiceObj.user.userId=0;
+      }
+      console.log(this.userServiceObj.user.name)
+      console.log(this.userServiceObj.user.email)
+      console.log(this.userServiceObj.user.date_of_birth)
+      console.log(this.userServiceObj.user.userId)
+      console.log(this.userServiceObj.user.visited)
+      this.userServiceObj.users.push(this.userServiceObj.user as User);
       console.log(this.userServiceObj.users)
     }
-    else{
-      localStorage.setItem(`Users`,JSON.stringify(this.userServiceObj.users))
-      console.log(this.userServiceObj.users)
-    }
-    console.log(this.userServiceObj.users)
+    localStorage.setItem(`Users`, JSON.stringify(this.userServiceObj.users));
+
+  
+    
   }
   showAllUsersResults(){
     this.router.navigate(['results'])
   }
-
 }

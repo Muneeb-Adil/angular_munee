@@ -16,7 +16,13 @@
     <br><br>
     <input type="date" placeholder="Enter your Date of Birth" formControlName="date_of_birth" required>
     <br><br>
+    <label >Select Quiz Category</label>
+    <select formControlName="categoryId" required >
+        <option value="none" selected disabled hidden>Select an Option</option> 
+        <option *ngFor="let item of category" [value]="item.id">{{ item.name }}</option>
+    </select>
     <button type="submit" [disabled]="!loginForm.valid">Start Quiz</button>
 </form>
+
 
 <button (click)="showAllUsersResults()" class="results-button">Results</button> 
