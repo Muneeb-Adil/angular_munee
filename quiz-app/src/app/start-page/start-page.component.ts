@@ -36,15 +36,17 @@ export class StartPageComponent implements OnInit {
 
 
   userLogin() {
-    let dateArray, date;
+    let dateArray, date,quizId:any,item:Category[];
     if (this.loginForm.valid) {
-      const categoryId = this.loginForm.get('categoryId')?.value;
-      this.questionServiceObj.quizCategory=categoryId? Number(categoryId):12
       this.userServiceObj.user.name = this.loginForm.get('username')?.value as string,
       this.userServiceObj.user.email = this.loginForm.get('email')?.value as string,
       dateArray = (this.loginForm.get('date_of_birth')?.value as string).split('-')
       date = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]
-      this.userServiceObj.user.date_of_birth = date
+      this.userServiceObj.user.date_of_birth = date,
+      quizId = this.loginForm.get('categoryId')?.value as string
+      item= this.category.filter((item)=>item.id===Number(quizId))
+      this.userServiceObj.user.attemptedQuizCategory=item[0].name
+      this.questionServiceObj.quizCategory=item[0].id
       this.router.navigate(['rules'])
     }
   }

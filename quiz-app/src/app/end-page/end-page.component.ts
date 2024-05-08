@@ -3,7 +3,7 @@ import { QuestionServiceService } from '../question-service.service';
 import { UserServiceService } from '../user-service.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
-import { empty } from 'rxjs';
+
 
 @Component({
   selector: 'app-end-page',
@@ -37,13 +37,8 @@ export class EndPageComponent implements OnInit {
       else{
         this.userServiceObj.user.userId=0;
       }
-      console.log(this.userServiceObj.user.name)
-      console.log(this.userServiceObj.user.email)
-      console.log(this.userServiceObj.user.date_of_birth)
-      console.log(this.userServiceObj.user.userId)
-      console.log(this.userServiceObj.user.visited)
       this.userServiceObj.users.push(this.userServiceObj.user as User);
-      console.log(this.userServiceObj.users)
+      
     }
     localStorage.setItem(`Users`, JSON.stringify(this.userServiceObj.users));
 
