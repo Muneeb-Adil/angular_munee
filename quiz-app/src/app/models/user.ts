@@ -5,6 +5,7 @@ export class User {
     marks: number
     userId:number
     visited:boolean
+    attemptedQuizCategory: string
 
     constructor(User: any) {
         this.name = User.name
@@ -13,5 +14,6 @@ export class User {
         this.marks=User.marks
         this.userId=User.userId
         this.visited = User.visited
+        this.attemptedQuizCategory=User.attemptedQuizCategory
     }
 }

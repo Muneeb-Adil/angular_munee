@@ -1,32 +1,40 @@
-<table mat-table [dataSource]="users" class="mat-elevation-z8 demo-table">
+<label>Select Quiz Category</label>
+<select [(ngModel)]="selectedCategory">
+  <option>All</option>
+  <option *ngFor="let item of category" [value]="item.name">{{ item.name }}</option>
+</select>
+<table mat-table [dataSource]="filterUsersByCategory()" class="mat-elevation-z8 demo-table">
+<ng-container matColumnDef="userId">
+  <th mat-header-cell *matHeaderCellDef> User ID </th>
+  <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+</ng-container>
 
-  <ng-container matColumnDef="userId">
-    <th mat-header-cell *matHeaderCellDef> User ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
-  </ng-container>
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> Name </th>
+  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
 
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="dob">
-    <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-    <td mat-cell *matCellDef="let element"> {{element.date_of_birth}} </td>
-  </ng-container>
+<ng-container matColumnDef="email">
+  <th mat-header-cell *matHeaderCellDef> Email </th>
+  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+</ng-container>
 
 
-  <ng-container matColumnDef="marks">
-    <th mat-header-cell *matHeaderCellDef> Marks </th>
-    <td mat-cell *matCellDef="let element"> {{element.marks}} </td>
-  </ng-container>
+<ng-container matColumnDef="dob">
+  <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+  <td mat-cell *matCellDef="let element"> {{element.date_of_birth}} </td>
+</ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+<ng-container matColumnDef="marks">
+  <th mat-header-cell *matHeaderCellDef> Marks </th>
+  <td mat-cell *matCellDef="let element"> {{element.marks}} </td>
+</ng-container>
+<ng-container matColumnDef="quizCategory">
+  <th mat-header-cell *matHeaderCellDef> Attempted Quiz Type </th>
+  <td mat-cell *matCellDef="let element" > {{element.attemptedQuizCategory}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
