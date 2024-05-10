@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
       "author": "typicode"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "some comment",
       "postId": 1
     }
@@ -18,16 +18,52 @@
   },
   "employees": [
     {
-      "firstName": "muneeb",
-      "lastName": "adil",
-      "email": "adilmuneeb9@gmail.com",
-      "dob": "2024-05-27T19:00:00.000Z",
+      "firstName": "sa",
+      "lastName": "sd",
+      "email": "sas",
+      "dob": "2024-05-19T19:00:00.000Z",
       "gender": "male",
       "education": "Graduate",
-      "company": "Iomechs",
-      "experience": "1",
-      "package": "1",
-      "id": 1
+      "company": "qw",
+      "experience": "-1",
+      "package": "3",
+      "id": "ce96"
+    },
+    {
+      "id": "6b01",
+      "firstName": "muneeb",
+      "lastName": "adil",
+      "email": "muneebsun@gmail.com",
+      "dob": "2024-05-04T19:00:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "google inshallah",
+      "experience": "2",
+      "package": "1000000"
+    },
+    {
+      "id": "a9dc",
+      "firstName": "karim",
+      "lastName": "uncle",
+      "email": "unclekarim@gmail.com",
+      "dob": "2024-05-19T19:00:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "wer",
+      "experience": "4",
+      "package": "4"
+    },
+    {
+      "id": "139d",
+      "firstName": "asda",
+      "lastName": "dfdx",
+      "email": "1qww",
+      "dob": "2024-05-05T19:00:00.000Z",
+      "gender": "male",
+      "education": "Diploma",
+      "company": "A",
+      "experience": "2",
+      "package": "3"
     }
   ]
 }
