@@ -17,8 +17,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatOptionModule } from '@angular/material/core';
 
-import { MatTableModule } from '@angular/material/table';@NgModule({
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';@NgModule({
   declarations: [
     AppComponent,
     StartPageComponent,
@@ -40,6 +42,8 @@ import { MatTableModule } from '@angular/material/table';@NgModule({
     MatButtonModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

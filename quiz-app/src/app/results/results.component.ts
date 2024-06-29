@@ -22,30 +22,34 @@ export class ResultsComponent implements OnInit {
  
   ngOnInit(): void {
     this.getData();
-    if(this.userServiceObj.users.length){
-      this.users=this.userServiceObj.users
-    }
-    else{
-      let userArray = localStorage.getItem(`Users`)
-      this.userServiceObj.users=userArray &&  JSON.parse(userArray)
-      this.users=this.userServiceObj.users
-    }
+    this.getUsers(); // Fetch users from backend on component initialization
   }
+
   getData() {
     this.questionServiceObj.getCategory().subscribe((data: any) => {
-      this.category = data["trivia_categories"].map((data: any)=>{
-        return new Category({name:data.name,
-        id:data.id
-      })
-    })
+      this.category = data["trivia_categories"].map((data: any) => new Category({
+        name: data.name,
+        id: data.id
+      }));
     });
   }
-  filterUsersByCategory(){
-    return !this.selectedCategory || this.selectedCategory==='All'? this.users: this.users.filter(user => user.attemptedQuizCategory === this.selectedCategory);
+
+  getUsers() {
+    this.userServiceObj.getUsers().subscribe(
+      (users: User[]) => {
+        this.users = users;
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+        // Handle error as needed
+      }
+    );
   }
-  // checkCategory(quizCategory){
-  //   return this.users.filter(user=>user.quizCategory)
 
-  // }
-
+  filterUsersByCategory() {
+    console.log(this.users);
+    return !this.selectedCategory || this.selectedCategory === 'All' ? 
+    this.users : 
+    this.users.filter(user => user.attemptedQuizCategory === this.selectedCategory);
+  }
 }

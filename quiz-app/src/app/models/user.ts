@@ -1,3 +1,5 @@
+import { Date } from "mongoose"
+
 export class User {
     name: string
     email : string

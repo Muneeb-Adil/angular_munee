@@ -11,7 +11,8 @@ const routes: Routes = [
   {path:'',component:StartPageComponent},
   {path:'question-page',component:QuestionPageComponent},
   {path:'end-page',component:EndPageComponent},
-  {path:'results',component:ResultsComponent}
+  {path:'results',component:ResultsComponent},
+  {path:'start-page',component:StartPageComponent}
 ];
 
 @NgModule({

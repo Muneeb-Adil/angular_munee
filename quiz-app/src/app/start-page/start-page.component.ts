@@ -47,9 +47,11 @@ export class StartPageComponent implements OnInit {
       item= this.category.filter((item)=>item.id===Number(quizId))
       this.userServiceObj.user.attemptedQuizCategory=item[0].name
       this.questionServiceObj.quizCategory=item[0].id
+      console.log(this.userServiceObj);
       this.router.navigate(['rules'])
     }
   }
+  
   showAllUsersResults() {
     this.router.navigate(['results'])
   }

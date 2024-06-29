@@ -21,3 +21,13 @@
 .results-button:hover {
     background-color: #0056b3;
 }
+form > div > span.error {
+	display: none;
+	font-size: 0.8em;
+	position: absolute;
+}
+
+form > div > input:invalid:not(:focus):not(:placeholder-shown) ~ .error {
+	display: block;
+	color: red;
+}
