@@ -24,4 +24,8 @@
   .mat-elevation-z8 tr:hover {
     background-color: #f2f2f2;
   }
+  .my-color{
+    color:red;
+    background-color: red;
+  }
   

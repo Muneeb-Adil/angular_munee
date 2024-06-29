@@ -10,9 +10,7 @@ import { Category } from './models/category';
 })
 export class QuestionServiceService {
   correctAnswersCount = 0
-  quizCategory! : number
-
-  private baseUrl = 'https://opentdb.com/api.php';
+  quizCategory! : number;
 
   constructor(private http: HttpClient) { }
   getCategory():Observable<Category[]>{
